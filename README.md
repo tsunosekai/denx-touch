@@ -1,60 +1,30 @@
 # denx-touch
 学生証を用いた入室ツイートのサーバサイド
 
-開発中
+``` bash
+cd denx-touch
+npm install
+node app
+```
 
+## API Refetence
 
-■登録完了してない場合
+1. カードタッチ時　例：　/touch?cardId=0114C42F3214F0&place=box234
 
-クライアントアプリ
-
-↓カードID
-
-サーバ　カードID⇒twitterアカウント　失敗する
-
-　　　　twitterログインのページを用意
-　　　　
-　　　　
-↓　URL
-
-クライアントサイド　ページをブラウザで開く
-
-
-ユーザ　ぽちー
-
-↓
-
-サーバ　カードIDとtwitterアカウント情報をDBにぶち込む
-
-↓ツイート
-
-twitter
-
-↓コールバック（成功/失敗）
-
-サーバ
-
-↓コールバック（成功/失敗）
-
-クライアントアプリ 音を出す
-
-
-■登録完了してる場合
-
-クライアントアプリ
-
-↓カードID
-
-サーバ　カードID⇒twitterアカウント
-
-↓ツイート
-
-twitter
-
-↓コールバック（成功/失敗）
-
-サーバ
-
-↓コールバック（成功/失敗）
-
-クライアントアプリ 音を出す
+  1. 未登録のcardIdの場合
+   
+    response : {"success":false,"url":"/register?cardId=0114C42F3214F005"}
+   
+    url は登録用ページ　これを開いてください
+   
+  1. 登録済みのcardId場合
+   
+     1. 退室時（，またはほかの場所に入室時）にタッチ
+       
+       respense : {"success":true,"twitterId":"@tsunosekai","inOrOut":"in"}
+  　    
+     1. 入室時にタッチ
+       
+       respense : {"success":true,"twitterId":"@tsunosekai","inOrOut":"out"}
+       
+1. 入室者確認 /places
