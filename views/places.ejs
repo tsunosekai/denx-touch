@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>入室状況</title>
+</head>
+<body>
+  <% usersOfPlaces.forEach(function(usersOfPlace){ %>
+    <% if(usersOfPlace.place!=null){%>
+  <p>
+      <%= usersOfPlace.place %>
+  </p>
+  <ul>
+      <% usersOfPlace.twitterIds.forEach(function(twitterId){ %>
+    <li><%= twitterId %></li>
+      <% }); %>
+  </ul>
+    <% } %>
+  <% }); %>
+</body>
+</html>

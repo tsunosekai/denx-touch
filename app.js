@@ -4,27 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//var passport = require('passport');
-//var Strategy = require('passport-twitter').Strategy;
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var tweet = require('./apps/tweet');
 var db = require('./apps/db');
 
-//tweet('ｆｊｌｓｆｊぁｓｆｊ');
-//db.register('0114C42F3214F004', '@tsunosekai');
-//db.register('0114B42FAC126A18', '@rauzii');
+//db.register('0114C42F3214F004', '@tsunosekai', null)
 //  .then(()=>console.log('OK'));
-
-//passport.use(new Strategy({
-//    consumerKey: process.env.CONSUMER_KEY,
-//    consumerSecret: process.env.CONSUMER_SECRET,
-//    callbackURL: 'http://127.0.0.1:3000/login/twitter/return'
-//  },
-//  function(token, tokenSecret, profile, cb) {
-//    return cb(null, profile);
-//  }));
+//db.register('0114B42FAC126A18', '@rauzii', null)
+//  .then(()=>console.log('OK'));
 
 var app = express();
 
@@ -39,10 +26,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -51,14 +36,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-//app.get('/login/twitter',
-//        passport.authenticate('twitter'));
-//
-//app.get('/login/twitter/return', 
-//  passport.authenticate('twitter', { failureRedirect: '/login' }),
-//  function(req, res) {
-//    res.redirect('/');
-//});
 
 // error handlers
 
