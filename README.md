@@ -9,11 +9,11 @@ node app
 
 ## API Refetence
 
-1. カードタッチ時　例：　/touch?cardId=0114C42F3214F0&place=box234
+1. カードタッチ時　/touch?cardId=111111111111111111&place=box234
 
   1. 未登録のcardIdの場合
    
-    response : {"success":false,"url":"/register?cardId=0114C42F3214F005"}
+    response例 : {"success":false,"url":"/register?cardId=0114C42F3214F005"}
    
     url は登録用ページ　これを開いてください
    
@@ -21,10 +21,10 @@ node app
    
      1. 退室時（，またはほかの場所に入室時）にタッチ
        
-       respense : {"success":true,"twitterId":"@tsunosekai","inOrOut":"in"}
+       response例 : {"success":true,"twitterId":"@tsunosekai","inOrOut":"in"}
   　    
      1. 入室時にタッチ
        
-       respense : {"success":true,"twitterId":"@tsunosekai","inOrOut":"out"}
+       response例 : {"success":true,"twitterId":"@tsunosekai","inOrOut":"out"}
        
-1. 入室者確認 /places
+1. 入室者確認ページ /places
