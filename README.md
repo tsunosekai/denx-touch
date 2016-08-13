@@ -21,10 +21,10 @@ node app
    
      1. 退室時（，またはほかの場所に入室時）にタッチ
        
-       response例 : {"success":true,"twitterId":"@tsunosekai","inOrOut":"in", place: "box233"}
+       response例 : {"success":true,"twitterId":"@tsunosekai","inOrOut":"in", place: "box234"}
   　    
      1. 入室時にタッチ
        
-       response例 : {"success":true,"twitterId":"@tsunosekai","inOrOut":"out", place: "box233"}
+       response例 : {"success":true,"twitterId":"@tsunosekai","inOrOut":"out", place: "box234"}
        
 1. 入室者確認ページ /places
