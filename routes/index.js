@@ -42,13 +42,13 @@ router.get('/touch', (req, res, next)=>{
           console.log('['+date+']'+user.twitterId+'さんが'+place+'から退室しました');
           db.changePlace(cardId, null);
           db.touch(cardId, place, date, 'out');
-          res.send({ success: true, twitterId: user.twitterId, inOrOut: 'out' });
+          res.send({ success: true, twitterId: user.twitterId, inOrOut: 'out', place: place });
         }else{
           var date = (new Date()).toLocaleString();
           console.log('['+date+']'+user.twitterId+'さんが'+place+'へ入室しました');
           db.changePlace(cardId, place);
           db.touch(cardId, place, date, 'in');
-          res.send({ success: true, twitterId: user.twitterId, inOrOut: 'in' });
+          res.send({ success: true, twitterId: user.twitterId, inOrOut: 'in', place: place});
         }
       }
     });
