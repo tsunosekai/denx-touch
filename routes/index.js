@@ -96,13 +96,21 @@ router.get('/touch', (req, res, next)=>{
           console.log('['+date+']'+user.username+'さんが'+place+'から退室しました');
           db.changePlace(cardId, null);
           db.touch(cardId, place, date, 'out');
+<<<<<<< HEAD
           res.send({ success: true, username: user.username, inOrOut: 'out' });
+=======
+          res.send({ success: true, twitterId: user.twitterId, inOrOut: 'out', place: place });
+>>>>>>> origin/master
         }else{
           var date = (new Date()).toLocaleString();
           console.log('['+date+']'+user.username+'さんが'+place+'へ入室しました');
           db.changePlace(cardId, place);
           db.touch(cardId, place, date, 'in');
+<<<<<<< HEAD
           res.send({ success: true, username: user.username, inOrOut: 'in' });
+=======
+          res.send({ success: true, twitterId: user.twitterId, inOrOut: 'in', place: place});
+>>>>>>> origin/master
         }
       }
     });
