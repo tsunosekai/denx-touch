@@ -35,6 +35,7 @@ router.get('/test2', (req, res)=>{console.log(JSON.stringify(req.session)); res.
 
 router.get('/authredirect',(req, res)=>{
   console.log('/authredirect cardId:'+req.query.cardId);
+  // ①↓ここで作ったセッション値が
   req.session.cardId = req.query.cardId;
   console.log('/authredirect session:'+JSON.stringify(req.session));
   res.redirect('/auth/slack');
@@ -44,18 +45,15 @@ router.get('/auth/slack',
   passport.authorize('slack'));
 
 router.get('/auth/slack/callback', 
-  passport.authorize('slack', { failureRedirect: '/login' }),
-  function(req, res) {
-    //下2つのデータがここで取得できない
-//    console.log('callback req.user:'+JSON.stringify(req.user));
-    console.log('callback session:'+JSON.stringify(req.session));
-    console.log('callback b:'+req.session.b);
+  passport.authorize('slack', { failureRedirect: '/login' }), (req, res)=>{
+    //②ここで取得できた
+    console.log('/auth/slack/callback session:'+JSON.stringify(req.session));
   
 //    db.register(req.headers.cookie, req.user.username)
 //      .then(()=>res.send('登録完了'))
 //      .catch(err=>res.send('ERROR:'+err));
     // Successful authentication, redirect home.
-    res.redirect('/test2');
+    res.send('');
   });
 
 router.get('/places', (req, res, next)=>{
