@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/denx-touch-test');
 
-var User = mongoose.model('User', { cardId: String, twitterId: String, place: String });
+var User = mongoose.model('User', { cardId: String, username: String, place: String });
 var Touch = mongoose.model('Touch', { cardId: String, place: String, date: String, inOrOut: String });
 
-var register = (cardId, twitterId, place)=>{
+var register = (cardId, username, place)=>{
   return new Promise((resolve, reject)=>{
-    var user = new User({ cardId: cardId, twitterId: twitterId, place: place });
+    var user = new User({ cardId: cardId, username: username, place: place });
     user.save().then(()=>resolve(), err=>reject(err));
   });
 };
@@ -44,10 +44,10 @@ var getUsersOfPlaces = ()=>{
     User.find({})
       .then(users=>{
         var usersOfPlaces = Enumerable.from(users)
-          .groupBy('$.place', '$.twitterId', (key, group)=>{
+          .groupBy('$.place', '$.username', (key, group)=>{
             return {
               place: key,
-              twitterIds: group.toArray()
+              usernames: group.toArray()
             }
           })
           .toArray();

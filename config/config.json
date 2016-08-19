@@ -1,0 +1,7 @@
+{
+  serverDomain: '192.168.10.105:3000',
+  slack: {
+    clientID: '15017424657.67269585538',
+    clientSecret: 'da2fbfd5e2175ac04f495b58a59a8edf'
+  }
+}
