@@ -48,6 +48,7 @@ router.get('/auth/slack/callback',
   passport.authorize('slack', { failureRedirect: '/login' }), (req, res)=>{
     //②ここで取得できた
     console.log('/auth/slack/callback session:'+JSON.stringify(req.session));
+    console.log('/auth/slack/callback username:'+JSON.stringify(req.user));
   
 //    db.register(req.headers.cookie, req.user.username)
 //      .then(()=>res.send('登録完了'))
@@ -76,7 +77,7 @@ router.post('/register', (req, res, next)=>{
 });
 
 
-// 例 http://localhost:3000/touch?cardId=432809483&place=box233
+// 例 /touch?cardId=432809483&place=box233
 
 router.get('/touch', (req, res, next)=>{
   var cardId = req.query.cardId;
